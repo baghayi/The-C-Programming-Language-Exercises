@@ -17,6 +17,14 @@ int main(void) {
     if ((test_result = test_reverse_character_string_three_characters()) != 0) return test_result;
     if ((test_result = test_reverse_character_string_with_enormous_characters()) != 0) return test_result;
 
+    char * line = NULL;
+    size_t line_size = 0;
+    while(getline(&line, &line_size, stdin) != EOF){
+        if (strcmp(line, "\n") == 0) continue;
+        printf("%s\n", reverse(line));
+    }
+    free(line);
+
     return 0;
 }
 
